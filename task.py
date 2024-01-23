@@ -1,5 +1,5 @@
 class Task:
-    def __init__(self, course, name, due, prep, priority, done=False) -> None:
+    def __init__(self, course=None, name='', due=0, prep=0, priority=0, done=False) -> None:
         self.course = course
         self.name = name
         self.due = due
@@ -18,5 +18,5 @@ class Task:
 
         start = self.due - self.prep
 
-        return (f"{self.course}, \"{self.name}\", Due by:{self.due}, "
-                f"Start by:{start}, {self.priority} priority, {done}")
+        return (f"{self.course}, \"{self.name}\", Due in {self.due} days, "
+                f"Start in {start} days, {self.priority} priority, {done}")
