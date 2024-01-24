@@ -20,10 +20,8 @@ class Task:
     def __str__(self):
         output = ''
         output += f'{self.course}'
-        output += f', \"{self.name}\"\n'
-        for i in range(len(f'{self.course}, ')):
-            output += ' '
-        output += f'-Due in {self.due} days'
+        output += f', \"{self.name}\"'
+        output += f', Due in {self.due} days'
 
         if self.prep != 0:
             output += f', Start in {self.due - self.prep} days'
@@ -34,5 +32,4 @@ class Task:
         if self.done:
             output += ', Completed'
         
-        # output += '\n'
         return output
