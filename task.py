@@ -12,11 +12,11 @@ class Task:
 
     def __str__(self):
         if self.done:
-            done: str = 'Completed'
+            done: str = ', Completed'
         else:
-            done: str = 'Not Completed'
+            done: str = ''
 
         start = self.due - self.prep
 
         return (f"{self.course}, \"{self.name}\", Due in {self.due} days, "
-                f"Start in {start} days, {self.priority} priority, {done}")
+                f"Start in {start} days, {self.priority} priority{done}")
