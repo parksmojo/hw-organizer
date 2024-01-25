@@ -21,7 +21,10 @@ class Task:
         output = ''
         output += f'{self.course}'
         output += f', \"{self.name}\"'
-        output += f', Due in {self.due} days'
+        if self.due == 0:
+            output += ', Due today'
+        else:
+            output += f', Due in {self.due} days'
 
         if self.prep != 0:
             output += f', Start in {self.due - self.prep} days'

@@ -8,12 +8,14 @@ class Interface:
 
     def process(self):
         while(self.running):
-            usrinput = input("Command: ")
+            usrinput = input('Command: ')
 
             match usrinput:
-                case "quit" | "Quit" | 'q':
+                case 'q' | 'quit' | 'Quit':
                     self.running = False
-                case 'print' | 'Print' | 'p':
+                case 'p' | 'print' | 'Print':
                     print(self.hwo)
+                case 'cleartasks':
+                    self.hwo.clear()
                 case _ :
-                    print(f"Command not recognized: {usrinput}")
+                    print(f'Command not recognized: {usrinput}')
