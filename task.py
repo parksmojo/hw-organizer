@@ -33,3 +33,14 @@ class Task:
             output += ', Completed'
         
         return output
+    
+    def __eq__(self, __value: object) -> bool:
+        # Assuming only Task objects will be passed in
+        # might need to be changed
+        if (self.name == __value.name) and (self.course == __value.course) and (self.due == __value.due):
+            return True
+        else:
+            return False
+        
+    def __hash__(self) -> int:
+        return super.__hash__(self)

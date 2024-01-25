@@ -12,9 +12,20 @@ class Organizer:
 
         self.course_list: set[str] = set()
     
-    def addTask(self, course, name, due, prep=0, priority=0):
-        self.all_tasks.add(Task(course, name, due, prep, priority))
-        self.save()
+    def addTask(self, course, name, due, prep=0, priority=0) -> bool:
+        exists: bool = False
+        temp: Task = Task(course, name, due, prep, priority)
+        for item in self.all_tasks:
+            if item == temp:
+                exists = True
+                break
+        if exists:
+            del temp
+            return False
+        else:
+            self.all_tasks.add(Task(course, name, due, prep, priority))
+            self.save()
+            return True
 
     def complete_task(self, name):
         for item in self.all_tasks:
@@ -25,6 +36,10 @@ class Organizer:
     def save(self):
         with open('task_data.txt', 'wb') as f:
             pickle.dump(self.all_tasks, f)
+    
+    def clear(self):
+        self.all_tasks.clear()
+        self.save()
 
     def __str__(self):
         output: str = 'Tasks:\n'
