@@ -15,7 +15,19 @@ class Interface:
                     self.running = False
                 case 'p' | 'print' | 'Print':
                     print(self.hwo)
+                case 'a' | 'add':
+                    self.addTask()
                 case 'cleartasks':
                     self.hwo.clear()
                 case _ :
                     print(f'Command not recognized: {usrinput}')
+
+    def addTask(self):
+        course = input('Input course name: ')
+        name = input('Input task name: ')
+        due = input('In how many days is the due date? ')
+        if self.hwo.addTask(course,name,due):
+            print('Task added successfully')
+        else:
+            print('Task already in organizer')
+        
