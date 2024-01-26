@@ -26,7 +26,7 @@ class Interface:
         course = input('Input course name: ')
         name = input('Input task name: ')
         due = input('In how many days is the due date? ')
-        if self.hwo.addTask(course,name,due):
+        if self.hwo.addTask(course,name,int(due)):
             print('Task added successfully')
         else:
             print('Task already in organizer')
