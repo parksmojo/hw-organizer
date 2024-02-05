@@ -3,7 +3,7 @@ from task import Task
 
 class Organizer:
     def __init__(self) -> None:
-        self.all_tasks: set[Task] = set()
+        self.all_tasks: list[Task] = []
         with open('task_data.txt', 'rb') as f:
             f.seek(0, os.SEEK_END) # go to end of file
             if f.tell(): # if current position is truish (i.e != 0)
@@ -15,15 +15,17 @@ class Organizer:
     def addTask(self, course, name, due, prep=0, priority=0) -> bool:
         exists: bool = False
         temp: Task = Task(course, name, due, prep, priority)
+
         for item in self.all_tasks:
             if item == temp:
                 exists = True
                 break
+            
         if exists:
             del temp
             return False
         else:
-            self.all_tasks.add(Task(course, name, due, prep, priority))
+            self.all_tasks.append(temp)
             self.save()
             return True
 
@@ -46,7 +48,8 @@ class Organizer:
         if len(self.all_tasks) == 0:
             output += 'No tasks'
         else:        
-            for item in self.all_tasks:
-                output += item.__str__()
+            for i in range(len(self.all_tasks)):
+                output += f"[{i}] "
+                output += self.all_tasks[i].__str__()
                 output += '\n'
         return output
